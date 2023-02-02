@@ -1,9 +1,14 @@
 import React from 'react'
 
 export default class Form extends React.Component {
+
+  handleSubmit = (evt => {
+    evt.preventDefault();
+    this.props.addItem(evt)
+  })
   render() {
     return (
-      <form>
+      <form onSubmit={evt => this.handleSubmit(evt)}>
         <input 
           placeholder='New item...'
           name='newItem'

@@ -29,6 +29,15 @@ handleChange = (evt => {
   this.setState({[name]: value})
 })
 
+addItem = (() =>{
+  if (this.state.newItem){
+  const newItem = {name: this.state.newItem, id: Date.now(), completed: false}
+  const newTodos = [...this.state.todos, newItem];
+  this.setState({todos: newTodos})
+  this.setState({newItem: ''})
+}
+})
+
   handleClick = (evt) => {
     const newTodos = [...this.state.todos];
     const item = newTodos.find(item => item.id === parseInt(evt.target.id));
@@ -45,6 +54,7 @@ handleChange = (evt => {
         <Form
           handleChange={this.handleChange}
           inputVal={this.state.newItem}
+          addItem={this.addItem}
         />
       </div>
     )
