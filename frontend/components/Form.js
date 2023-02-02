@@ -15,7 +15,8 @@ export default class Form extends React.Component {
           onChange={this.props.handleChange}
           value={this.props.inputVal}
           />
-        <button>Add Item</button>
+        <button type='submit'>Add Item</button>
+        <button onClick={this.props.clear}>Clear Completed</button>
       </form>
     )
   }

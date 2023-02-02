@@ -29,6 +29,11 @@ handleChange = (evt => {
   this.setState({[name]: value})
 })
 
+clear = (() => {
+  const newTodos = this.state.todos.filter(item => item.completed === false);
+  this.setState({todos: newTodos})
+})
+
 addItem = (() =>{
   if (this.state.newItem){
   const newItem = {name: this.state.newItem, id: Date.now(), completed: false}
@@ -55,6 +60,7 @@ addItem = (() =>{
           handleChange={this.handleChange}
           inputVal={this.state.newItem}
           addItem={this.addItem}
+          clear={this.clear}
         />
       </div>
     )
