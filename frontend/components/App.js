@@ -24,7 +24,10 @@ export default class App extends React.Component {
   }
   
   handleClick = (evt) => {
-    console.log(evt.target)
+    const newTodos = [...this.state.todos];
+    const item = newTodos.find(item => item.id === parseInt(evt.target.id));
+    item.completed = !item.completed;
+    this.setState({todos: newTodos});
   }
   render() {
     return (
