@@ -7,6 +7,8 @@ export default class Form extends React.Component {
         <input 
           placeholder='New item...'
           name='newItem'
+          onChange={this.props.handleChange}
+          value={this.props.inputVal}
           />
         <button>Add Item</button>
       </form>

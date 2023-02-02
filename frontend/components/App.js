@@ -18,11 +18,17 @@ export default class App extends React.Component {
             completed: false
           }
       ], 
+      newItem: ''
 
       
     }
   }
   
+handleChange = (evt => {
+  const { name, value} = evt.target;
+  this.setState({[name]: value})
+})
+
   handleClick = (evt) => {
     const newTodos = [...this.state.todos];
     const item = newTodos.find(item => item.id === parseInt(evt.target.id));
@@ -34,8 +40,12 @@ export default class App extends React.Component {
       <div>
         <TodoList 
           todos={this.state.todos} 
-          handleClick={this.handleClick}/>
-        <Form />
+          handleClick={this.handleClick}
+        />
+        <Form
+          handleChange={this.handleChange}
+          inputVal={this.state.newItem}
+        />
       </div>
     )
   }
